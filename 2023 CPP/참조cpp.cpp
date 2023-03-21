@@ -3,7 +3,7 @@
 using namespace std;
 
 int main(void) {
-	5
+	
 	int a = 30;			// a : 30
 	int& ra = a;		// ra : a의 주소값 (&a)
 	
