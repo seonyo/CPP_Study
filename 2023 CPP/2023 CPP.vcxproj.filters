@@ -48,5 +48,8 @@
     <ClCompile Include="stringTest4.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="클래스 기본.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
