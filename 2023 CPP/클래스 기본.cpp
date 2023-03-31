@@ -9,26 +9,32 @@ class Student {
 	// 성능때문에 grade를 문자열로 하지 않음
 	// 일반적으로 문자열은 정수형 데이터보다 많은 메모리 공간을 요구하며
 	// 정수는 비교연산을 한번에 할 수 있으나, 문자열은 글자수 만큼 비교해야함
-public:5
+public:
 	int grade;
 	string name;
 	string phonenumber;
 	string major;
 	string adress;
 
+	void print (void){
+		//C언어에서의 구조체는 함수 선언을 못하지만 c++은 가능
+			cout << "학번 : " << grade << endl;
+			cout << "이름 : " <<  name<< endl;
+			cout << "전화번호 : " << phonenumber<< endl;
+			cout << "학과 : " << major << endl;
+			cout << "주소 : " << adress << endl;
+	}
+
 };
 int main(void) {
 	//자료형 : Student (class 생략가능)
 	class Student information; 
-	information.grade = 2216;
-	information.name = "정선영";
-	information.phonenumber = "010-6601-6535";
-	information.major = "뉴미디어 소프트웨어과";
-	information.adress = "서울시 송파구";
-
 	cout << "학번 : " << information.grade << endl;
 	cout << "이름 : " << information.name << endl;
 	cout << "전화번호 : " << information.phonenumber << endl;
 	cout << "학과 : " << information.major << endl;
 	cout << "주소 : " << information.adress << endl;
+
+	information.print();
+
 }
