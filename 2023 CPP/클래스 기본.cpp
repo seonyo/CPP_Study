@@ -16,7 +16,7 @@ struct Student {
 
 };
 int main(void) {
-	//자료형 : struct pizza (C++에서는 pizza만 써도 가능)
+	//자료형 : struct Student (C++에서는 Student만 써도 가능)
 	struct Student information; 
 	information.grade = 2216;
 	information.name = "정선영";
