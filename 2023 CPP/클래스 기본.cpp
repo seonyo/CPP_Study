@@ -2,6 +2,11 @@
 #include <string>
 using namespace std;
 
+struct Person {
+	int height;
+	int weight;
+};
+
 //여러 data들을 하나의 의미있는 구조체로 묶어서 관리
 //구조체, 클래슨믄 일반적으로 단어의 첫 글자를 대문자로 함
 //class는 디폴트가 private (struct는 디폴트가 public)
@@ -49,15 +54,28 @@ private:
 };
 
 int main(void) {
-	cout << "매개변수가 없는 클래스" << endl;
+
 	//자료형 : Student (class 생략가능)
 	//class Student stu1; 
 	Student stu1 = Student();
 	//stu1.print();
-	cout << endl << "매개변수가 있는 클래스" << endl;
 
 	//class Student stu2 (2216, "정선영", "010-6601-6535", "뉴미디어소프트웨어과", "서울시 송파구");
 	Student stu2 = Student(2216, "정선영", "010-6601-6535", "뉴미디어소프트웨어과", "서울시 송파구");
-	stu2.print();
+	//stu2.print();
+	
+	struct Person p;
+	p.height = 186;
+	p.weight = 82;
+
+	struct Person* ptr = &p;
+
+	//둘 다 같은 결과
+	cout << "키 : " << ptr->height << endl;
+	cout << "몸무게 : " << (*ptr).weight << endl;
+
+	cout << "키" << p.height << endl;
+	cout << "몸무게 : " << p.weight << endl;
+
 
 }
