@@ -25,7 +25,7 @@ public:
 	}
 
 	Student(int grade, string name, string phonenumber, string major, string adress) {
-		this->grade = grade;
+		this->grade = grade;  //this는 함수가 호출된 객체를 가리킴
 		this->name = name;
 		this->phonenumber = phonenumber;
 		this->major = major;
@@ -76,6 +76,4 @@ int main(void) {
 
 	cout << "키" << p.height << endl;
 	cout << "몸무게 : " << p.weight << endl;
-
-
 }
