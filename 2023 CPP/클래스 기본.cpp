@@ -16,6 +16,10 @@ public:
 	string major;
 	string adress;
 
+	//생성자 (constructor) : 객체를 생성할 때 호출되는 함수
+	//생성자를 정의하지 않으면 default로 매개변수가 없는 생성자가 정의된다
+	//Student(){}
+
 	void print (void){
 		//C언어에서의 구조체는 함수 선언을 못하지만 c++은 가능
 			cout << "학번 : " << grade << endl;
