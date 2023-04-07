@@ -20,7 +20,7 @@ public:
 	}
 
 
-	Student(int grade, string name, string phonenumber, string major, string address)
+	Student(int grade, string name, string phonenumber, string major, string adress)
 		//멤버변수 초기화, const/참조형 멤버변수 사용가능
 		: grade(grade), name(name), phonenumber(phonenumber), major(major), adress(adress)
 	{
@@ -54,20 +54,12 @@ int main(void) {
 	Student stu1 = Student();
 	//stu1.print();
 
-	//class Student stu2 (2216, "정선영", "010-6601-6535", "뉴미디어소프트웨어과", "서울시 송파구");
-	Student stu2 = Student(2216, "정선영", "010-6601-6535", "뉴미디어소프트웨어과", "서울시 송파구");
+	//정적할당
+	//Student stu2 = Student(2216, "정선영", "010-6601-6535", "뉴미디어소프트웨어과", "서울시 송파구");
 	//stu2.print();
 	
-	struct Person p ;
-	p.height = 186;
-	p.weight = 82;
-
-	struct Person* ptr = &p;
-
-	//둘 다 같은 결과. ptr-> 과 (*ptr)은 같음
-	cout << "키 : " << ptr->height << endl;
-	cout << "몸무게 : " << (*ptr).weight << endl;
-
-	cout << "키" << p.height << endl;
-	cout << "몸무게 : " << p.weight << endl;
+	//동적할당 된 공간은 포인터로 접근한다.
+	Student* stu3 = new Student(22, "율곡", "010-0000-0000", "유교", "한성");
+	stu3->print();
+	return 0;
 }
