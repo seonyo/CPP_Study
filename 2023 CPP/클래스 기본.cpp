@@ -2,11 +2,6 @@
 #include <string>
 using namespace std;
 
-struct Person {
-	int height;
-	int weight;
-};
-
 //여러 data들을 하나의 의미있는 구조체로 묶어서 관리
 //구조체, 클래슨믄 일반적으로 단어의 첫 글자를 대문자로 함
 //class는 디폴트가 private (struct는 디폴트가 public)
@@ -24,12 +19,11 @@ public:
 		adress = "서울시 관악구";
 	}
 
-	Student(int grade, string name, string phonenumber, string major, string adress) {
-		this->grade = grade;  //this는 함수가 호출된 객체를 가리킴
-		this->name = name;
-		this->phonenumber = phonenumber;
-		this->major = major;
-		this->adress = adress;
+
+	Student(int grade, string name, string phonenumber, string major, string address)
+		//멤버변수 초기화, const/참조형 멤버변수 사용가능
+		: grade(grade), name(name), phonenumber(phonenumber), major(major), adress(adress)
+	{
 	}
 
 	void print(void) {
@@ -64,7 +58,7 @@ int main(void) {
 	Student stu2 = Student(2216, "정선영", "010-6601-6535", "뉴미디어소프트웨어과", "서울시 송파구");
 	//stu2.print();
 	
-	struct Person p;
+	struct Person p ;
 	p.height = 186;
 	p.weight = 82;
 
