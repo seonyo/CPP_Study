@@ -9,7 +9,7 @@ class Student {
 
 public:
 	//생성자 (constructor) : 객체를 생성할 때 호출되는 함수
-	//생성자는 반환형을 쓰지 않는다
+	//
 	//생성자를 정의하지 않으면 default로 매개변수가 없는 생성자가 정의된다
 	Student()
 	{
@@ -59,13 +59,25 @@ int main(void) {
 	//Student stu2 = Student(2216, "정선영", "010-6601-6535", "뉴미디어소프트웨어과", "서울시 송파구");
 	//stu2.print();
 	
+	Student stu3[2];
+	for (int i = 0; i < 2; i++) {
+		stu3[i].print();
+	}
+
+
+
 	//동적할당 : 실행시간(runtime)에 메모리 크기가 결정 (메모리; heap영역)
 	//동적할당 된 공간은 포인터로 접근한다.
-	Student* stu3 = new Student(22, "율곡", "010-0000-0000", "유교", "한성");
-	stu3->print();
+	//Student* stu3 = new Student(22, "율곡", "010-0000-0000", "유교", "한성");
+	//stu3->print();  //stu3의 멤버는 ->로 접근 (stu3은 포인터)
 
-	//동적할당 해제 (안하면 메모리 누수현상이 발생)
-	delete stu3;
+	////동적할당 해제 (안하면 메모리 누수현상이 발생)
+	//delete stu3;
 
-	return 0;
+	Student* stu4 = new Student[2];
+	for (int i = 0; i < 2; i++) {
+		stu4[i].print(); //배열의 요소에 해당하는 객체는 멤버를 .으로 접근 (stu4[i]는 int)
+	}
+	delete[] stu4; //배열을 delete할 때는 [] 꼭 써줘야 함
+ 	return 0;
 }
