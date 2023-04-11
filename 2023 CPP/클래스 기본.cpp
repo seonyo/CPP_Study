@@ -11,14 +11,7 @@ public:
 	//생성자 (constructor) : 객체를 생성할 때 호출되는 함수
 	//
 	//생성자를 정의하지 않으면 default로 매개변수가 없는 생성자가 정의된다
-	Student()
-	{
-		grade = 2200;
-		name = "박남길";
-		phonenumber = "000-0000-0000";
-		major = "뉴미디어소프트웨어과";
-		adress = "서울시 관악구";
-	}
+	Student() {}
 
 
 	Student(int grade, string name, string phonenumber, string major, string adress)
@@ -35,6 +28,12 @@ public:
 		cout << "학과 : " << major << endl;
 		cout << "주소 : " << adress << endl;
 	}
+
+	void set_grade(int _grade) {grade = _grade;}
+	void set_name(string _name) { name = _name; }
+	void set_phonenumber(string _phonenumber) { phonenumber = _phonenumber; }
+	void set_major(string _major) { major = _major; }
+	void set_adress(string _adress) { adress = _adress; }
 
 private:
 	// 성능때문에 grade를 문자열로 하지 않음
@@ -59,10 +58,10 @@ int main(void) {
 	//Student stu2 = Student(2216, "정선영", "010-6601-6535", "뉴미디어소프트웨어과", "서울시 송파구");
 	//stu2.print();
 	
-	Student stu3[2];
-	for (int i = 0; i < 2; i++) {
-		stu3[i].print();
-	}
+	//Student stu3[2];
+	//for (int i = 0; i < 2; i++) {
+	//	stu3[i].print();
+	//}
 
 
 
@@ -75,6 +74,18 @@ int main(void) {
 	//delete stu3;
 
 	Student* stu4 = new Student[2];
+	stu4[0].set_name("박진영");
+	stu4[0].set_adress("니가사는그집");
+	stu4[0].set_grade(1111);
+	stu4[0].set_major("뉴미디어소프트웨어");
+	stu4[0].set_phonenumber("000-0000-0000");
+
+	stu4[1].set_name("선미");
+	stu4[1].set_adress("서울어딘가");
+	stu4[1].set_grade(1112);
+	stu4[1].set_major("뉴미디어소프트웨어");
+	stu4[1].set_phonenumber("000-0000-0001");
+
 	for (int i = 0; i < 2; i++) {
 		stu4[i].print(); //배열의 요소에 해당하는 객체는 멤버를 .으로 접근 (stu4[i]는 int)
 	}
