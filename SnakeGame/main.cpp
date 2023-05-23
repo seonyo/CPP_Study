@@ -38,6 +38,11 @@ int main(void) {
 		if (Keyboard::isKeyPressed(Keyboard::Down))
 			snake.move(0, 5);
 
+		//뱀이 사과를 먹었을때 (getGlobalBaounds가 교집합이라는 뜻이다)
+		if (snake.getGlobalBounds().intersects(apple.getGlobalBounds())) {
+			apple.setPosition(rand() % (640 - 50), rand() % (480 - 50));
+		}
+
 		window.clear();
 		
 		window.draw(apple);
