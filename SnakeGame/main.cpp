@@ -4,12 +4,17 @@ using namespace sf;
 
 int main(void) {
 	RenderWindow window(VideoMode(640, 480), "Snake Game"); //  프레임 보이게
-	//컴퓨터가 1초 동안 처리하는 횟수를 60으로 제한한다
+	//컴퓨터가 1초 동안 처리하는 횟수를 60으로 제한한다 (Frame Per Second를 60으로 조절)
 	window.setFramerateLimit(60);
 	RectangleShape snake;
 	snake.setFillColor(Color::White);
 	snake.setPosition(320, 240);
 	snake.setSize(Vector2f(50, 20));
+
+	RectangleShape apple;
+	apple.setFillColor(Color::Red);
+	apple.setPosition(200, 400);
+	apple.setSize(Vector2f(20, 20));
 
 	while (window.isOpen())
 	{
@@ -31,8 +36,9 @@ int main(void) {
 			snake.move(0, 5);
 
 		window.clear();
-
-		window.draw(snake);
+		
+		window.draw(apple);
+		window.draw(snake);  //draw를 늦게할 수록 더 위에 있다.
 		window.display();
 	}
 	return 0;
