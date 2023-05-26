@@ -73,7 +73,7 @@ int main(void) {
 
 
 		//뱀이 사과를 먹었을때 (getGlobalBaounds가 교집합이라는 뜻이다)
-		if (snake.getGlobalBounds().intersects(apple.getGlobalBounds())) {
+		if (snake_x == apple_x && snake_y == apple_y) {
 			apple_x = rand() % G_WIDTH, apple_y = rand() % G_HEIGHT;
 			apple.setPosition(apple_x * BLOCK_SIZE, apple_y * BLOCK_SIZE);
 		}
