@@ -13,17 +13,17 @@ public:
 	//깊은 복사생성자
 	IntArray(const IntArray& rhs) 
 		{
-		size_ = rhs.size_;
-		arr_ - new int[size_];
+		int size_ = rhs.size;
+		int* arr_ = new int[size_];
 		for (int i = 0; i < size_; i++) {
-			arr_[i] = rhs.arr_[i];
+			arr_[i] = rhs.arr[i];
 		}
 	}
 
 
 private :
-	int* arr_;
-	int size_;
+	int* arr;
+	int size;
 	
 
 };
