@@ -11,26 +11,26 @@ public:
 	}
 
 	//깊은 복사생성자
-	IntArray(const IntArray& rhs) 
-		{
-		int size_ = rhs.size;
-		int* arr_ = new int[size_];
+	IntArray(const IntArray& rhs)
+	{
+		size_ = rhs.size_;
+		arr_ - new int[size_];
 		for (int i = 0; i < size_; i++) {
-			arr_[i] = rhs.arr[i];
+			arr_[i] = rhs.arr_[i];
 		}
 	}
 
 
-private :
-	int* arr;
-	int size;
-	
+private:
+	int* arr_;
+	int size_;
+
 
 };
 
 int main(void) {
 	int arr[] = { 1,2,3 };
-	IntArray ia = IntArray(arr, sizeof(arr)/sizeof(*arr));
+	IntArray ia = IntArray(arr, sizeof(arr) / sizeof(*arr));
 	IntArray ca = ia;  //복사생성자 호출
 
 	return 0;

@@ -112,7 +112,6 @@ int main(void) {
 
 	
 		//뱀이 사과를 먹었을때 (getGlobalBaounds가 교집합이라는 뜻이다)
-		//TODO : 뱀의 길이가 1일 때 두 번 먹어야 길이가 2로 늘어남.
 		if (snake.body_[0].x_ == apple.x_ && snake.body_[0].y_ == apple.y_) {
 			//사과 위치 전환
 			apple.x_ = rand() % G_WIDTH, apple.y_ = rand() % G_HEIGHT;
