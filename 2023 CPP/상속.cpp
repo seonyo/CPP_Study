@@ -11,6 +11,7 @@ public:
 	}
 
 	~Animal() { cout << "동물 소멸자" << endl; }
+	//동적 바인딩 (가상함수)
 	void Bark(void) { cout << "동물 짖는다" << endl; }
 	void Eat(void) { cout << "동물 먹는다" << endl; }
 	void Hunt(void) { cout << "동물 사냥한다" << endl; }
