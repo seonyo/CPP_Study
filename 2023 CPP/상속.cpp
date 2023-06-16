@@ -1,4 +1,5 @@
-#include <iostream>
+ï»¿#include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -6,49 +7,48 @@ class Animal {
 public:
 	Animal(int age, string name) : age_(age), name_(name)
 	{
-		cout << "µ¿¹° »ı¼ºÀÚ" << endl; 
-
+		cout << "ë™ë¬¼ ìƒì„±ì" << endl;
 	}
 
-	~Animal() { cout << "µ¿¹° ¼Ò¸êÀÚ" << endl; }
-	//µ¿Àû ¹ÙÀÎµù (°¡»óÇÔ¼ö)
-	void Bark(void) { cout << "µ¿¹° Â¢´Â´Ù" << endl; }
-	void Eat(void) { cout << "µ¿¹° ¸Ô´Â´Ù" << endl; }
-	void Hunt(void) { cout << "µ¿¹° »ç³ÉÇÑ´Ù" << endl; }
+	virtual ~Animal() { cout << "ë™ë¬¼ ì†Œë©¸ì" << endl; }
+
+	// ë™ì  ë°”ì¸ë”©(ê°€ìƒí•¨ìˆ˜)
+	virtual void Bark(void) { cout << "ë™ë¬¼ ì§–ëŠ”ë‹¤" << endl; }
+	virtual void Eat(void) { cout << "ë™ë¬¼ ë¨¹ëŠ”ë‹¤" << endl; }
+	virtual void Hunt(void) { cout << "ë™ë¬¼ ì‚¬ëƒ¥í•œë‹¤" << endl; }
 
 private:
 	int age_;
 	string name_;
 };
 
-//µÎ·ç¹Ì
+// ë‘ë£¨ë¯¸
 class Crane : public Animal
 {
 public:
-	// º°µµÀÇ ¾ğ±ŞÀÌ ¾ø¾îµµ ¸Å°³º¯¼ö°¡ ¾ø´Â ºÎ¸ğ»ı¼ºÀÚ°¡ È£ÃâµÈ´Ù
+
 	Crane(int age, string name, int leg_length) : Animal(age, name)
-	{ 
-		cout << "µÎ·ç¹Ì »ı¼ºÀÚ" << endl; 
+	{
+		cout << "ë‘ë£¨ë¯¸ ìƒì„±ì" << endl;
 		leg_length_ = leg_length;
 	}
-	~Crane() { cout << "µÎ·ç¹Ì ¼Ò¸êÀÚ" << endl; }
+	~Crane() { cout << "ë‘ë£¨ë¯¸ ì†Œë©¸ì" << endl; }
 
-	void Bark(){
-		cout << "µÎ·çµÎ·ç" << endl;
+	// ì˜¤íƒ€ê°™ì€ ì‹¤ìˆ˜ë¥¼ ë°©ì§€í•˜ê¸° ìœ„í•´ override í‚¤ì›Œë“œë¥¼ ì‚¬ìš©(Javaì˜ @override)
+	void Bark() override
+	{
+		cout << "ë‘ë£¨ë‘ë£¨" << endl;
 	}
 
 private:
 	int leg_length_;
 };
 
-int main(void) {
-	Animal* animal = new Animal(18, "µ¿¹°ÀÌ");
-	animal->Bark();	//µ¿¹° Â¢´Â´Ù
-	delete animal;  
-
-	animal =  new Crane(3, "Áö¿ì", 108);
-	animal->Bark(); //µ¿¹° Â¢´Â´Ù (Á¤Àû ¹ÙÀÎµùÀ¸·Î ÀÎÇØ ºÎ¸ğÀÇ ¸â¹öÇÔ¼ö¸¦ È£Ãâ)
-
+int main(void)
+{
+	Animal* animal = new Crane(3, "ì§€ìš°", 108);
+	animal->Bark();		// ë‘ë£¨ë‘ë£¨
 	delete animal;
+
 	return 0;
 }
