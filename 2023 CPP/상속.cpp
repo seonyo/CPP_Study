@@ -10,6 +10,7 @@ public:
 		cout << "동물 생성자" << endl;
 	}
 
+	//소멸자에는 무조건 virtual을 넣자 (메모리 누수 방지)
 	virtual ~Animal() { cout << "동물 소멸자" << endl; }
 
 	// 동적 바인딩(가상함수)
