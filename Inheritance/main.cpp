@@ -2,13 +2,48 @@
 
 using namespace sf;
 
-int main(void) {
-	RenderWindow window(VideoMode(640, 480), "Snake Game"); //  프레임 보이게
+class Entity {
+public:
+	// 왠만하면 클래스를 매개변수 할 때 99.99%는 주소값으로 넘기기
+	// 메모리 용량을 줄일 수 있다. call by value를 피하기 위해
 
-	RectangleShape snake;
-	snake.setFillColor(Color::White);
-	snake.setPosition(320, 240);
-	snake.setSize(Vector2f(50, 20));
+	Entity(int life, int speed, RectangleShape* sprite)
+		: life_(life), speed_(speed), sprite_(sprite)
+	{
+
+	}
+	~Entity() {}
+
+	void move(float x, float y)
+	{
+		sprite_->move(x, y);
+	}
+	// getter
+	int get_life(void) { return life_; }
+	int get_speed(void) { return speed_; }
+	RectangleShape get_sprite(void) { return *sprite_; }
+
+	// setter
+	void set_life(int val) { life_ = val;  }
+	void set_speed(int val) { speed_  = val; }
+	void set_sprite(RectangleShape* val) { sprite_ = val; }
+
+private:
+	int life_;
+	int speed_;
+	RectangleShape* sprite_;
+
+};
+int main(void) {
+	RenderWindow window(VideoMode(1000, 800), "SangSok"); //  프레임 보이게
+	window.setFramerateLimit(60);
+
+	RectangleShape p;
+	p.setFillColor(Color::Red);
+	p.setPosition(100, 300);
+	p.setSize(Vector2f(50, 20));
+
+	Entity* player = new Entity(3, 5, &p);
 
 	while (window.isOpen())
 	{
@@ -19,15 +54,21 @@ int main(void) {
 				window.close();
 		}
 
+		int p_speed = player->get_speed();
 		if (Keyboard::isKeyPressed(Keyboard::Right))
-			snake.move(1, 0);
+			player->move(p_speed, 0);
 
 		if (Keyboard::isKeyPressed(Keyboard::Left))
-			snake.move(-1, 0);
+			player->move(-p_speed, 0);
+		
+		if (Keyboard::isKeyPressed(Keyboard::Up))
+			player->move(0, -p_speed);
+
+		if (Keyboard::isKeyPressed(Keyboard::Down))
+			player->move(0, p_speed);
 
 		window.clear();
-
-		window.draw(snake);
+		window.draw(player->get_sprite());
 		window.display();
 	}
 	return 0;
