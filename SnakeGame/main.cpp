@@ -36,10 +36,11 @@ public:
 	int GetScore() { return score_; }
 	Object* GetBody() { return body_; }
 
+
 	void SetDir(int dir) { dir_ = dir; }
 	void SetLength(int length) { length_ = length; }
 	void SetScore(int score) { score_ = score; }
-
+	
 	void IncLength(void) { length_++; }
 	void IncScore(int val) { score_ += val; }
 
@@ -56,9 +57,8 @@ public:
 		}
 		body_[0].x_ = 3, body_[0].y_ = 3;
 	}
-
+	 
 	// 머리 이외의 몸통
-
 	void UpdateBody(void)
 	{
 		for (int i = GetLength() - 1; i > 0; i--) {
@@ -67,7 +67,7 @@ public:
 			body_[i].sprite_.setPosition(body_[i].x_ * BLOCK_SIZE, body_[i].y_ * BLOCK_SIZE);
 		}
 	}
-
+	
 	// 머리
 	void UpdateHead(void)
 	{
@@ -105,7 +105,6 @@ public:
 int main(void)
 {
 
-
 	srand(time(NULL));
 	RenderWindow window(VideoMode(WIDTH, HEIGHT), "Snake Game");
 
@@ -113,7 +112,23 @@ int main(void)
 	//Frame Per Second를 60으로 조절
 	window.setFramerateLimit(15);
 
-	Snake snake = Snake(DIR_DOWN, 1 , 0);
+	Font font;
+	if (!font.loadFromFile("C:\\Windows\\Fonts\\arial.ttf"))
+	{
+		printf("폰트 불러오기 실패");
+		return -1;
+	}
+
+	Text t_info;
+	t_info.setFont(font);
+	t_info.setFillColor(Color::Magenta);
+	t_info.setCharacterSize(50);
+	t_info.setPosition(0, 0);
+
+
+	char t_info_buf[100];
+
+	Snake snake = Snake(DIR_DOWN, 1);
 	snake.InitBody();
 
 	Apple apple;
@@ -122,7 +137,7 @@ int main(void)
 	apple.sprite_.setPosition(apple.x_ * BLOCK_SIZE, apple.y_ * BLOCK_SIZE);
 	apple.sprite_.setSize(Vector2f(BLOCK_SIZE, BLOCK_SIZE));
 
-
+	
 
 	while (window.isOpen())
 	{
@@ -149,8 +164,10 @@ int main(void)
 		}
 
 		// update
+		
+		sprintf(t_info_buf, "score : %d \n", snake.GetScore());
+		t_info.setString(t_info_buf);
 
-		printf("snake : %d \n", snake.GetScore());
 		snake.UpdateBody();
 		snake.UpdateHead();
 
@@ -162,6 +179,7 @@ int main(void)
 			//사과 위치전환
 			apple.x_ = rand() % G_WIDTH, apple.y_ = rand() % G_HEIGHT;
 			apple.sprite_.setPosition(apple.x_ * BLOCK_SIZE, apple.y_ * BLOCK_SIZE);
+
 
 			snake.IncScore(5);
 
@@ -176,6 +194,7 @@ int main(void)
 		for (int i = 0; i < snake.GetLength(); i++)
 			window.draw(snake.GetBody()[i].sprite_);
 		window.draw(apple.sprite_);  //draw를 늦게 할 수록 더 위에 있다
+		window.draw(t_info);
 
 		window.display();
 	}
