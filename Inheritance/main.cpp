@@ -1,4 +1,6 @@
 ﻿#include <SFML/Graphics.hpp>
+#include <stdlib.h>
+#include <time.h>
 
 using namespace sf;
 
@@ -35,15 +37,25 @@ private:
 
 };
 int main(void) {
+
+	srand((unsigned int)time(NULL));
+
 	RenderWindow window(VideoMode(1000, 800), "SangSok"); //  프레임 보이게
 	window.setFramerateLimit(60);
 
 	RectangleShape p;
-	p.setFillColor(Color::Red);
+	p.setFillColor(Color::Blue);
 	p.setPosition(100, 300);
 	p.setSize(Vector2f(50, 20));
 
+	RectangleShape e1;
+	e1.setFillColor(Color::Red);
+	e1.setPosition(rand()%800, rand()%600);
+	e1.setSize(Vector2f(40, 40));
+
 	Entity* player = new Entity(3, 5, &p);
+
+	Entity* enemy1 = new Entity(1, 3, &e1);
 
 	while (window.isOpen())
 	{
@@ -68,6 +80,8 @@ int main(void) {
 			player->move(0, p_speed);
 
 		window.clear();
+
+		window.draw(enemy1->get_sprite());
 		window.draw(player->get_sprite());
 		window.display();
 	}
