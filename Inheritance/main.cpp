@@ -20,9 +20,10 @@ public:
 	{
 		sprite_->move(x, y);
 	}
-	void eat() {
+	virtual void eat(Player *p) {
 
 	}
+
 	// getter
 	int get_life(void) { return life_; }
 	int get_speed(void) { return speed_; }
@@ -45,6 +46,11 @@ public:
 	Player(int life, int speed, RectangleShape* sprite, int score)
 		: Entity(life, speed, sprite), score_(score)
 	{}
+
+	void eat(Entity* e) override
+	{
+		e->set_life(0);
+	}
 private:
 	int score_;
 };
@@ -100,9 +106,17 @@ int main(void) {
 		if (Keyboard::isKeyPressed(Keyboard::Down))
 			player->move(0, p_speed);
 
+		//palyer가 enemy와 닿으면
+		if (player->get_sprite().getGlobalBounds().intersects(enemy1->get_sprite().getGlobalBounds()))
+		{
+			player->eat(enemy1);
+		}
 		window.clear();
 
-		window.draw(enemy1->get_sprite());
+		if(enemy1->get_life()>0)
+			window.draw(enemy1->get_sprite());
+
+
 		window.draw(player->get_sprite());
 		window.display();
 	}
