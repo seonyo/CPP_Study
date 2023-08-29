@@ -24,5 +24,8 @@
     <ClCompile Include="템플릿 클래스.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="템블릿 연습2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
