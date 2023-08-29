@@ -1,11 +1,9 @@
-#include <iostream>
-using namespace std;
+#pragma once
+#include "animal.h"
 
 class Cat : public Animal {
 public:
-	void bark(void) {
-		cout << "¾ß¿Ë" << endl;
-	}
+	void bark(void);
 private:
 	int claw;
 };
