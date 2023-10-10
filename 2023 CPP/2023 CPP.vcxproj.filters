@@ -33,5 +33,11 @@
     <ClCompile Include="mapExam.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="vectorExam.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="벡터.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -21,6 +21,6 @@ int main(void) {
 		if (iter->first == ques) answer = iter->second;
 	}
 
-	if (answer == "") cout << ques << +"님의 정보가 등록되어 있지 않습니다.";
+	if (answer == "") cout << ques << "님의 정보가 등록되어 있지 않습니다.";
 	else cout << ques << "님의 생일은 " << answer << " 입니다";
 }
