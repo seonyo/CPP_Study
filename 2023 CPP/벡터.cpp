@@ -16,6 +16,7 @@ int main(void) {
 	arr.push_back(50);
 
 	vector<int>::iterator iter;
+	// 반복자(iterator) iter를 활용하여 모든 원소를 출력
 	for (iter=arr.begin(); iter!=arr.end(); iter++)
 		cout << *iter << " ";
 	return 0;
