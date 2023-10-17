@@ -8,6 +8,14 @@
 #define DIR_RIGHT	2
 #define DIR_LEFT	3
 
+enum Dir {
+	UP,
+	DOWN,
+	RIGHT,
+	LEFT
+
+};
+
 #define BODY_MAX    20
 
 using namespace sf;
@@ -72,16 +80,16 @@ public:
 	void UpdateHead(void)
 	{
 		//머리
-		if (GetDir() == DIR_UP && body_[0].y_ > 0) {
+		if (GetDir() == UP && body_[0].y_ > 0) {
 			body_[0].y_--;
 		}
-		else if (GetDir() == DIR_DOWN && body_[0].y_ < G_HEIGHT - 1) {
+		else if (GetDir() == DOWN && body_[0].y_ < G_HEIGHT - 1) {
 			body_[0].y_++;
 		}
-		else if (GetDir() == DIR_RIGHT && body_[0].x_ < G_WIDTH - 1) {
+		else if (GetDir() == RIGHT && body_[0].x_ < G_WIDTH - 1) {
 			body_[0].x_++;
 		}
-		else if (GetDir() == DIR_LEFT && body_[0].x_ > 0) {
+		else if (GetDir() == LEFT && body_[0].x_ > 0) {
 			body_[0].x_--;
 		}
 		body_[0].sprite_.setPosition(body_[0].x_ * BLOCK_SIZE, body_[0].y_ * BLOCK_SIZE);
@@ -128,7 +136,7 @@ int main(void)
 	//유니코드(한글)를 호환하기 위한 자료형으로 변경
 	wchar_t t_info_buf[100];
 
-	Snake snake = Snake(DIR_DOWN, 1);
+	Snake snake = Snake(DOWN, 1);
 	snake.InitBody();
 
 	Apple apple;
@@ -151,16 +159,16 @@ int main(void)
 
 		// 방향키가 동시에 눌러지지 않도록 else 처리
 		if (Keyboard::isKeyPressed(Keyboard::Right)) {
-			snake.SetDir(DIR_RIGHT);
+			snake.SetDir(RIGHT);
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Left)) {
-			snake.SetDir(DIR_LEFT);
+			snake.SetDir(LEFT);
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Up)) {
-			snake.SetDir(DIR_UP);
+			snake.SetDir(UP);
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Down)) {
-			snake.SetDir(DIR_DOWN);
+			snake.SetDir(DOWN);
 		}
 
 		// update
